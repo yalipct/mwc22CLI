@@ -18,13 +18,31 @@ Maven project developed in Eclipse IDE using PicoCLI, Hibernate and Jackson libr
 
 ## Usage
 ```
--v, --version Show the version and exit.
+java -jar mwc-cli.jar [COMANDS][ARGS]
 ```
+**Read json file and add it to Database**
 ```
--h, --helpn Show the version and exit.
+java -jar mwc-cli.jar read 
 ```
+**List Lists all developers**
 ```
--add, -create, -plus Add a new developer to the list.
+java -jar mwc-cli.jar 
+```
+**Shows the days that the MWC is available**
+```
+java -jar mwc-cli.jar info 
+```
+**Show the version and exit.**
+```
+-v, --version 
+```
+**Show the version and exit.**
+```
+-h, --help 
+```
+**Add a new developer to the list.**
+```
+-add, -create, -plus 
 -n<name> -e<email> -c<category> -tel<phone> -d<date>
 ```
 
