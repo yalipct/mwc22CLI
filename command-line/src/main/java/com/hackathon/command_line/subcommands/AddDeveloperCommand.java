@@ -16,6 +16,7 @@ import com.hackathon.command_line.util.InputsValidation;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Unmatched;
 
 @CommandLine.Command(name = "add", aliases = { "create",
 		"plus" }, version = "1.0.0", mixinStandardHelpOptions = true, requiredOptionMarker = '*', description = "This is a Sub Command to 'mwc' and add a new developer to the list", header = "Add new developer", optionListHeading = "%nOptions are:%n", footerHeading = "%nCopyright", footer = "%nDeveloped by Aliuvys Ojeda")
@@ -30,10 +31,10 @@ public class AddDeveloperCommand implements Callable<Integer> {
 	@Option(names = { "-c", "--ctg" }, description = "Provide a category", required = true, arity = "0..1", interactive = true)
 	String ctg;
 
-	@Option(names = { "-tel", "--phone" }, description = "Provide a phone", required = true, arity = "0..1", interactive = true)
+	@Option(names = { "-tel", "--phone" }, description = "Provide a telephone number [example: +34672123321]", required = true, arity = "0..1", interactive = true)
 	String tel;
 
-	@Option(names = { "-d", "--date" }, required = true, description = "Provide a date [example: \"Mar 1, 2021\"]", arity = "0..1", interactive = true)
+	@Option(names = { "-d", "--date" }, description = "Provide a date [example: \"Mar 1, 2021\"]", required = true, arity = "0..1", interactive = true)
 	String day;
 
 	@Override
@@ -49,7 +50,13 @@ public class AddDeveloperCommand implements Callable<Integer> {
 		String email = InputsValidation.readEmail(mail);
 		String phone = InputsValidation.readPhone(tel);
 		Category category = InputsValidation.readCategory(ctg);
-		MwcDays date = InputsValidation.readDate(day);
+		MwcDays date = null;
+		try {
+			date = InputsValidation.readDate(day);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Developer developer = new Developer(name, email, category, phone, date);
 		addDeveloperToDatabase(developer);
