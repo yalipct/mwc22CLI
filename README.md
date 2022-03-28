@@ -24,9 +24,9 @@ java -jar mwc-cli.jar [COMANDS][ARGS]
 ```
 java -jar mwc-cli.jar read 
 ```
-**List Lists all developers**
+**List all developers**
 ```
-java -jar mwc-cli.jar 
+java -jar mwc-cli.jar list/ls/show
 ```
 **Shows the days that the MWC is available**
 ```
@@ -36,14 +36,12 @@ java -jar mwc-cli.jar info
 ```
 -v, --version 
 ```
-**Show the version and exit.**
+**Show the help and exit.**
 ```
 -h, --help 
 ```
 **Add a new developer to the list.**
 ```
--add, -create, -plus 
+java -jar mwc-cli.jar add/create/plus 
 -n<name> -e<email> -c<category> -tel<phone> -d<date>
 ```
-
-## Examples
