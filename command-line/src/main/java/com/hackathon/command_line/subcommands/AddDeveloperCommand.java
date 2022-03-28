@@ -16,7 +16,6 @@ import com.hackathon.command_line.util.InputsValidation;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.Unmatched;
 
 @CommandLine.Command(name = "add", aliases = { "create",
 		"plus" }, version = "1.0.0", mixinStandardHelpOptions = true, requiredOptionMarker = '*', description = "This is a Sub Command to 'mwc' and add a new developer to the list", header = "Add new developer", optionListHeading = "%nOptions are:%n", footerHeading = "%nCopyright", footer = "%nDeveloped by Aliuvys Ojeda")
@@ -50,13 +49,7 @@ public class AddDeveloperCommand implements Callable<Integer> {
 		String email = InputsValidation.readEmail(mail);
 		String phone = InputsValidation.readPhone(tel);
 		Category category = InputsValidation.readCategory(ctg);
-		MwcDays date = null;
-		try {
-			date = InputsValidation.readDate(day);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		MwcDays date = InputsValidation.readDate(day);
 
 		Developer developer = new Developer(name, email, category, phone, date);
 		addDeveloperToDatabase(developer);
