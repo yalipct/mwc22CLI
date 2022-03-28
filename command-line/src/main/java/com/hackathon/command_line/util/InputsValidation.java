@@ -14,7 +14,7 @@ public class InputsValidation {
 		String name = "";
 		boolean right = text.matches("^[A-Za-z]*$");
 
-		if (!text.isEmpty()) {
+		if (!text.equals("")) {
 			name = text;
 		} else {
 			right = false;
@@ -23,7 +23,7 @@ public class InputsValidation {
 		while (!right) {
 			System.out.println("Introduce a valid name:");
 			name = in.nextLine();
-			if (!name.matches("^[A-Za-z]*$")) {
+			if (!name.matches("^[A-Za-z]*$") || name.equals("")) {
 				right = false;
 			} else {
 				right = true;
