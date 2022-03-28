@@ -127,7 +127,7 @@ public class InputsValidation {
 		return right;
 	}
 
-	public static MwcDays readDate(String text) throws Exception {
+	public static MwcDays readDate(String text) {
 		MwcDays date = null;
 		boolean valid = validEnumMwcDays(text);
 
