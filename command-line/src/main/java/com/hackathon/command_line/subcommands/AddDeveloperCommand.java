@@ -21,19 +21,19 @@ import picocli.CommandLine.Option;
 		"plus" }, version = "1.0.0", mixinStandardHelpOptions = true, requiredOptionMarker = '*', description = "This is a Sub Command to 'mwc' and add a new developer to the list", header = "Add new developer", optionListHeading = "%nOptions are:%n", footerHeading = "%nCopyright", footer = "%nDeveloped by Aliuvys Ojeda")
 public class AddDeveloperCommand implements Callable<Integer> {
 
-	@Option(names = { "-n", "--name" }, description = "Provide name", required = true)
+	@Option(names = { "-n", "--name" }, description = "Provide name", required = true, arity = "0..1", interactive = true)
 	String n;
 
-	@Option(names = { "-e", "--email" }, description = "Provide an email", required = true)
+	@Option(names = { "-e", "--email" }, description = "Provide an email", required = true, arity = "0..1", interactive = true)
 	String mail;
 
-	@Option(names = { "-c", "--ctg" }, description = "Provide a category", required = true)
+	@Option(names = { "-c", "--ctg" }, description = "Provide a category", required = true, arity = "0..1", interactive = true)
 	String ctg;
 
-	@Option(names = { "-tel", "--phone" }, description = "Provide a phone", required = true)
+	@Option(names = { "-tel", "--phone" }, description = "Provide a phone", required = true, arity = "0..1", interactive = true)
 	String tel;
 
-	@Option(names = { "-d", "--date" }, required = true, description = "Provide a date [example: \"Mar 1, 2021\"]")
+	@Option(names = { "-d", "--date" }, required = true, description = "Provide a date [example: \"Mar 1, 2021\"]", arity = "0..1", interactive = true)
 	String day;
 
 	@Override
