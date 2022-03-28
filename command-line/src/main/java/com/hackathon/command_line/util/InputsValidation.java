@@ -23,7 +23,7 @@ public class InputsValidation {
 		while (!right) {
 			System.out.println("Introduce a valid name:");
 			name = in.nextLine();
-			if (!name.matches("^[A-Za-z]*$") || name.equals("")) {
+			if (!name.matches("^[A-Za-z]*$") || name.equals("")) {				
 				right = false;
 			} else {
 				right = true;
@@ -46,7 +46,7 @@ public class InputsValidation {
 		while (!right) {
 			System.out.println("Introduce a valid email:");
 			email = in.nextLine();
-			if (!email.matches("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]{2,3}+))+")) {
+			if (!email.matches("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]{2,3}+))+") || email.equals("")) {
 				right = false;
 			} else {
 				right = true;
@@ -69,7 +69,7 @@ public class InputsValidation {
 		while (!valid) {
 			System.out.println("Introduce a valid telephone number [+34672123321]:");
 			phone = in.nextLine();
-			if (!phone.matches("(\\+34|0034|34)?[-]*(6|7)[-]*([0-9][-]*){8}")) {
+			if (!phone.matches("(\\+34|0034|34)?[-]*(6|7)[-]*([0-9][-]*){8}") || phone.equals("")) {
 				valid = false;
 			} else {
 				valid = true;
@@ -91,7 +91,7 @@ public class InputsValidation {
 		while (!valid) {
 			System.out.println("Please enter a valid category:");
 			String ctg = in.nextLine().toUpperCase();
-			if (Category.from(ctg) != null) {
+			if (Category.from(ctg) != null && !ctg.equals("")) {
 				category = Category.from(ctg);
 				valid = true;
 			}
@@ -127,7 +127,7 @@ public class InputsValidation {
 		return right;
 	}
 
-	public static MwcDays readDate(String text) {
+	public static MwcDays readDate(String text) throws Exception {
 		MwcDays date = null;
 		boolean valid = validEnumMwcDays(text);
 
@@ -136,9 +136,9 @@ public class InputsValidation {
 		}
 
 		while (!valid) {
-			System.out.println("Please enter a valid date [Mar 1, 2021]:");
+			System.out.println("Please enter a valid date [\"Mar 1, 2021\"]:");
 			String day = in.nextLine();
-			if (MwcDays.from(day) != null) {
+			if (MwcDays.from(day) != null && !day.equals("")) {
 				date = MwcDays.from(day);
 				valid = true;
 			}
